@@ -19,3 +19,11 @@ class OrganizationDetailView(DetailView):
     model = Organization
     context_object_name = 'organization'
     template_name = 'organization_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['members'] = self.object.orgmember_set.select_related(
+            'student',
+            'student__program'
+        ).all()
+        return context

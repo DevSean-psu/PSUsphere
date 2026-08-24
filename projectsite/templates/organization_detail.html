@@ -10,6 +10,7 @@
         <h4 class="page-title">{{ organization.name }}</h4>
 
         <div class="row">
+
             <div class="col-md-8">
 
                 <div class="card">
@@ -22,7 +23,6 @@
 
                     <div class="card-body">
 
-                        <h5>Description</h5>
                         <p>{{ organization.description }}</p>
 
                         {% if organization.college %}
@@ -30,6 +30,79 @@
                             <strong>College:</strong>
                             {{ organization.college.college_name }}
                         </p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <div class="card-title">Organization Members</div>
+                    </div>
+
+                    <div class="card-body">
+
+                        {% if members %}
+
+                        <div class="table-responsive">
+
+                            <table class="table table-hover">
+
+                                <thead>
+                                    <tr>
+                                        <th>Student ID</th>
+                                        <th>Name</th>
+                                        <th>Program</th>
+                                        <th>Date Joined</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    {% for member in members %}
+
+                                    <tr>
+                                        <td>{{ member.student.student_id }}</td>
+
+                                        <td>
+                                            {{ member.student.lastname }},
+                                            {{ member.student.firstname }}
+                                            {% if member.student.middlename %}
+                                                {{ member.student.middlename }}
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            {{ member.student.program.prog_name }}
+                                        </td>
+
+                                        <td>
+                                            {{ member.date_joined }}
+                                        </td>
+                                    </tr>
+
+                                    {% endfor %}
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        {% else %}
+
+                        <p>No members found for this organization.</p>
+
                         {% endif %}
 
                         <a href="{% url 'organizations' %}"
@@ -42,6 +115,7 @@
                 </div>
 
             </div>
+
         </div>
 
     </div>
