@@ -2,45 +2,43 @@ from django.contrib import admin
 from django.urls import path
 from studentorg import views
 
+
 urlpatterns = [
-    path(
-        'admin/',
-        admin.site.urls
-    ),
+    path("admin/", admin.site.urls),
 
     path(
-        '',
+        "",
         views.HomePageView.as_view(),
-        name='home'
+        name="home",
     ),
 
     path(
-        'organizations/',
+        "organizations/",
         views.OrganizationListView.as_view(),
-        name='organizations'
+        name="organizations",
     ),
 
     path(
-        'organizations/<int:pk>/',
+        "organizations/<int:pk>/",
         views.OrganizationDetailView.as_view(),
-        name='organization_detail'
+        name="organization_detail",
     ),
 
     path(
-        'students/',
+        "students/",
         views.StudentListView.as_view(),
-        name='students'
+        name="students",
     ),
 
     path(
-        'programs/',
+        "programs/",
         views.ProgramListView.as_view(),
-        name='programs'
+        name="programs",
     ),
 
     path(
-        'colleges/',
+        "colleges/",
         views.CollegeListView.as_view(),
-        name='colleges'
+        name="colleges",
     ),
 ]

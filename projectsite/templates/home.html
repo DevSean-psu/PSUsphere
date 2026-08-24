@@ -1,124 +1,25 @@
 {% extends 'base.html' %}
-
-{% block title %}Home - PSUSphere{% endblock %}
+{% load static %}
 
 {% block content %}
-
 <div class="content">
     <div class="container-fluid">
-
-        <h4 class="page-title">Dashboard</h4>
-
-        <div class="row">
-
-            <div class="col-md-4">
-                <div class="card card-stats">
-                    <div class="card-body">
-                        <div class="numbers">
-                            <p class="card-category">Organizations</p>
-                            <h4 class="card-title">
-                                {{ home|length }}
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card card-stats">
-                    <div class="card-body">
-                        <div class="numbers">
-                            <p class="card-category">Programs</p>
-                            <h4 class="card-title">
-                                8
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card card-stats">
-                    <div class="card-body">
-                        <div class="numbers">
-                            <p class="card-category">Students</p>
-                            <h4 class="card-title">
-                                52
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <h4 class="page-title">Home</h4>
 
         <div class="row">
-
             <div class="col-md-12">
-
                 <div class="card">
-
                     <div class="card-header">
-                        <div class="card-title">
-                            Registered Organizations
-                        </div>
+                        <div class="card-title">Page Title</div>
+                        <div class="card-category">Page Subtitle</div>
                     </div>
 
                     <div class="card-body">
-
-                        <div class="row">
-
-                            {% for organization in home %}
-
-                            <div class="col-md-4">
-                                <div class="card">
-
-                                    <div class="card-body">
-
-                                        <h5>
-                                            {{ organization.name }}
-                                        </h5>
-
-                                        <p>
-                                            {{ organization.description }}
-                                        </p>
-
-                                        {% if organization.college %}
-                                        <p>
-                                            <strong>College:</strong>
-                                            {{ organization.college.college_name }}
-                                        </p>
-                                        {% endif %}
-
-                                        <a href="{% url 'organization_detail' organization.pk %}"
-                                           class="btn btn-primary">
-                                            View Organization
-                                        </a>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            {% empty %}
-
-                            <div class="col-md-12">
-                                <p>No registered organizations.</p>
-                            </div>
-
-                            {% endfor %}
-
-                        </div>
-
+                        Hello, World
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </div>
-
 {% endblock %}

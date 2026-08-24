@@ -13,7 +13,7 @@
 
             {% for college in colleges %}
 
-            <div class="col-md-4">
+            <div class="col-md-6 col-lg-4">
                 <div class="card">
 
                     <div class="card-header">
@@ -44,7 +44,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        No colleges found.
+                        No colleges registered yet.
                     </div>
                 </div>
             </div>
@@ -52,10 +52,6 @@
             {% endfor %}
 
         </div>
-
-        {% if is_paginated %}
-            {% include 'includes/pagination.html' %}
-        {% endif %}
 
     </div>
 </div>

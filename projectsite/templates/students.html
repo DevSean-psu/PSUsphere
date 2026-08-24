@@ -9,73 +9,79 @@
 
         <h4 class="page-title">Students</h4>
 
-        <div class="card">
+        <div class="row">
 
-            <div class="card-header">
-                <div class="card-title">Student Directory</div>
-                <div class="card-category">
-                    All registered students
-                </div>
-            </div>
+            <div class="col-md-12">
 
-            <div class="card-body">
+                <div class="card">
 
-                <div class="table-responsive">
+                    <div class="card-header">
+                        <div class="card-title">Registered Students</div>
+                        <div class="card-category">
+                            Student directory
+                        </div>
+                    </div>
 
-                    <table class="table table-hover">
+                    <div class="card-body">
 
-                        <thead>
-                            <tr>
-                                <th>Student ID</th>
-                                <th>Name</th>
-                                <th>Program</th>
-                                <th>College</th>
-                            </tr>
-                        </thead>
+                        <div class="table-responsive">
 
-                        <tbody>
+                            <table class="table table-hover">
 
-                            {% for student in students %}
+                                <thead>
+                                    <tr>
+                                        <th>Student ID</th>
+                                        <th>Name</th>
+                                        <th>Program</th>
+                                        <th>College</th>
+                                    </tr>
+                                </thead>
 
-                            <tr>
-                                <td>{{ student.student_id }}</td>
+                                <tbody>
 
-                                <td>
-                                    {{ student.lastname }},
-                                    {{ student.firstname }}
-                                    {% if student.middlename %}
-                                        {{ student.middlename }}
-                                    {% endif %}
-                                </td>
+                                    {% for student in students %}
 
-                                <td>
-                                    {{ student.program.prog_name }}
-                                </td>
+                                    <tr>
+                                        <td>{{ student.student_id }}</td>
 
-                                <td>
-                                    {{ student.program.college.college_name }}
-                                </td>
-                            </tr>
+                                        <td>
+                                            {{ student.lastname }},
+                                            {{ student.firstname }}
+                                            {% if student.middlename %}
+                                                {{ student.middlename }}
+                                            {% endif %}
+                                        </td>
 
-                            {% empty %}
+                                        <td>
+                                            {{ student.program.prog_name }}
+                                        </td>
 
-                            <tr>
-                                <td colspan="4">
-                                    No students found.
-                                </td>
-                            </tr>
+                                        <td>
+                                            {{ student.program.college.college_name }}
+                                        </td>
+                                    </tr>
 
-                            {% endfor %}
+                                    {% empty %}
 
-                        </tbody>
+                                    <tr>
+                                        <td colspan="4" class="text-center">
+                                            No students registered yet.
+                                        </td>
+                                    </tr>
 
-                    </table>
+                                    {% endfor %}
 
-                </div>
+                                </tbody>
 
-                {% if is_paginated %}
+                            </table>
+
+                        </div>
+
+                    </div>
+
                     {% include 'includes/pagination.html' %}
-                {% endif %}
+
+                </div>
 
             </div>
 
