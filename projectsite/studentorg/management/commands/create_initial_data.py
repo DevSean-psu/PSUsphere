@@ -38,5 +38,4 @@ class Command(BaseCommand):
             'Initial data for students created successfully.'
         ))
 
-    def create_membership(self, count):
-        fake = Faker()
+   
