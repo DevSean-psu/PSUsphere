@@ -1,18 +1,21 @@
-from django.views.generic import ListView
-from studentorg.models import Organization, College, Program, Student
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from studentorg.models import Organization
 
 
 class HomePageView(ListView):
     model = Organization
-    context_object_name = 'organizations'
+    context_object_name = 'home'
     template_name = 'home.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
 
-        context['organization_count'] = Organization.objects.count()
-        context['college_count'] = College.objects.count()
-        context['program_count'] = Program.objects.count()
-        context['student_count'] = Student.objects.count()
+class OrganizationListView(ListView):
+    model = Organization
+    context_object_name = 'organizations'
+    template_name = 'organizations.html'
 
-        return context
+
+class OrganizationDetailView(DetailView):
+    model = Organization
+    context_object_name = 'organization'
+    template_name = 'organization_detail.html'
