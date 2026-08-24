@@ -10,7 +10,6 @@
 
     <title>{% block title %}PSUSphere{% endblock %}</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/ready.css' %}">
     <link rel="stylesheet" href="{% static 'css/demo.css' %}">
@@ -18,6 +17,77 @@
 
 <body>
 
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="sidebar-wrapper">
+
+            <div class="logo">
+                <a href="{% url 'home' %}" class="simple-text">
+                    PSUSphere
+                </a>
+            </div>
+
+            <ul class="nav">
+
+                <li class="active">
+                    <a href="{% url 'home' %}">
+                        <i class="la la-dashboard"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/studentorg/organization/">
+                        <i class="la la-building"></i>
+                        <p>Organizations</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/studentorg/college/">
+                        <i class="la la-university"></i>
+                        <p>Colleges</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/studentorg/program/">
+                        <i class="la la-book"></i>
+                        <p>Programs</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/studentorg/student/">
+                        <i class="la la-users"></i>
+                        <p>Students</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/studentorg/orgmember/">
+                        <i class="la la-user-plus"></i>
+                        <p>Organization Members</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin/">
+                        <i class="la la-cog"></i>
+                        <p>Admin</p>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Main Panel -->
     <div class="main-panel">
 
         {% block content %}
@@ -25,20 +95,21 @@
 
     </div>
 
-    <!-- JavaScript -->
-    <script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
-    <script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'js/core/popper.min.js' %}"></script>
-    <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/plugin/chartist/chartist.min.js' %}"></script>
-    <script src="{% static 'js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js' %}"></script>
-    <script src="{% static 'js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
-    <script src="{% static 'js/plugin/bootstrap-toggle/bootstrap-toggle.min.js' %}"></script>
-    <script src="{% static 'js/plugin/jquery-mapael/jquery.mapael.min.js' %}"></script>
-    <script src="{% static 'js/plugin/jquery-mapael/maps/world_countries.min.js' %}"></script>
-    <script src="{% static 'js/plugin/chart-circle/circles.min.js' %}"></script>
-    <script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
-    <script src="{% static 'js/ready.min.js' %}"></script>
+</div>
+
+<script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
+<script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/core/popper.min.js' %}"></script>
+<script src="{% static 'js/core/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/plugin/chartist/chartist.min.js' %}"></script>
+<script src="{% static 'js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js' %}"></script>
+<script src="{% static 'js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
+<script src="{% static 'js/plugin/bootstrap-toggle/bootstrap-toggle.min.js' %}"></script>
+<script src="{% static 'js/plugin/jquery-mapael/jquery.mapael.min.js' %}"></script>
+<script src="{% static 'js/plugin/jquery-mapael/maps/world_countries.min.js' %}"></script>
+<script src="{% static 'js/plugin/chart-circle/circles.min.js' %}"></script>
+<script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+<script src="{% static 'js/ready.min.js' %}"></script>
 
 </body>
 
