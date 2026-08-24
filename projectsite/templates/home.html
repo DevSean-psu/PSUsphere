@@ -11,38 +11,41 @@
 
         <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card card-stats">
                     <div class="card-body">
-                        <p class="card-category">Organizations</p>
-                        <h4 class="card-title">{{ organization_count }}</h4>
+                        <div class="numbers">
+                            <p class="card-category">Organizations</p>
+                            <h4 class="card-title">
+                                {{ home|length }}
+                            </h4>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card card-stats">
                     <div class="card-body">
-                        <p class="card-category">Colleges</p>
-                        <h4 class="card-title">{{ college_count }}</h4>
+                        <div class="numbers">
+                            <p class="card-category">Programs</p>
+                            <h4 class="card-title">
+                                8
+                            </h4>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card card-stats">
                     <div class="card-body">
-                        <p class="card-category">Programs</p>
-                        <h4 class="card-title">{{ program_count }}</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card card-stats">
-                    <div class="card-body">
-                        <p class="card-category">Students</p>
-                        <h4 class="card-title">{{ student_count }}</h4>
+                        <div class="numbers">
+                            <p class="card-category">Students</p>
+                            <h4 class="card-title">
+                                52
+                            </h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,60 +53,69 @@
         </div>
 
         <div class="row">
+
             <div class="col-md-12">
 
                 <div class="card">
+
                     <div class="card-header">
-                        <div class="card-title">Organizations</div>
-                        <div class="card-category">
-                            Registered student organizations
+                        <div class="card-title">
+                            Registered Organizations
                         </div>
                     </div>
 
                     <div class="card-body">
 
-                        <div class="table-responsive">
-                            <table class="table table-hover">
+                        <div class="row">
 
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Organization</th>
-                                        <th>College</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
+                            {% for organization in home %}
 
-                                <tbody>
-                                    {% for organization in organizations %}
-                                    <tr>
-                                        <td>{{ forloop.counter }}</td>
-                                        <td>{{ organization.name }}</td>
-                                        <td>
-                                            {% if organization.college %}
-                                                {{ organization.college.college_name }}
-                                            {% else %}
-                                                N/A
-                                            {% endif %}
-                                        </td>
-                                        <td>{{ organization.description }}</td>
-                                    </tr>
-                                    {% empty %}
-                                    <tr>
-                                        <td colspan="4" class="text-center">
-                                            No organizations found.
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
+                            <div class="col-md-4">
+                                <div class="card">
 
-                            </table>
+                                    <div class="card-body">
+
+                                        <h5>
+                                            {{ organization.name }}
+                                        </h5>
+
+                                        <p>
+                                            {{ organization.description }}
+                                        </p>
+
+                                        {% if organization.college %}
+                                        <p>
+                                            <strong>College:</strong>
+                                            {{ organization.college.college_name }}
+                                        </p>
+                                        {% endif %}
+
+                                        <a href="{% url 'organization_detail' organization.pk %}"
+                                           class="btn btn-primary">
+                                            View Organization
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            {% empty %}
+
+                            <div class="col-md-12">
+                                <p>No registered organizations.</p>
+                            </div>
+
+                            {% endfor %}
+
                         </div>
 
                     </div>
+
                 </div>
 
             </div>
+
         </div>
 
     </div>

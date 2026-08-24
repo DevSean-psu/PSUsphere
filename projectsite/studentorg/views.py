@@ -1,7 +1,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-from studentorg.models import Organization, Student
+from studentorg.models import Organization, Student, Program, College
 
 
 class HomePageView(ListView):
@@ -36,4 +36,18 @@ class StudentListView(ListView):
     model = Student
     context_object_name = 'students'
     template_name = 'students.html'
+    paginate_by = 20
+
+
+class ProgramListView(ListView):
+    model = Program
+    context_object_name = 'programs'
+    template_name = 'programs.html'
+    paginate_by = 20
+
+
+class CollegeListView(ListView):
+    model = College
+    context_object_name = 'colleges'
+    template_name = 'colleges.html'
     paginate_by = 20
