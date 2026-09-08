@@ -1,7 +1,5 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% block content %}
 <div class="content">
     <div class="container-fluid">
         <h4 class="page-title">Home</h4>
@@ -9,6 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+
                     <div class="card-header">
                         <div class="card-title">
                             {% if object %}
@@ -23,9 +22,8 @@
 
                     <div class="col-md-6">
                         <div class="card-body">
-                            <form action="" method="post" novalidate>
+                            <form class="" action="" method="post" novalidate>
                                 {% csrf_token %}
-
                                 {% include 'includes/form.html' %}
 
                                 <div class="form-group">
@@ -42,6 +40,8 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
+
 {% endblock %}
