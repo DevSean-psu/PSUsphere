@@ -1,49 +1,47 @@
 """
 URL configuration for projectsite project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/6.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+The `urlpatterns` list routes URLs to views.
 """
+
 from django.contrib import admin
-from django.urls import path
-from studentorg.views import HomePageView, OrganizationList, OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView, OrganizationMemberListView, OrganizationMemberCreateView, OrganizationMemberUpdateView, OrganizationMemberDeleteView, StudentListView, StudentCreateView, StudentUpdateView, StudentDeleteView, CollegeListView, CollegeCreateView, CollegeUpdateView, CollegeDeleteView, ProgramListView, ProgramCreateView, ProgramUpdateView, ProgramDeleteView
+from django.urls import path, include
+
 from studentorg import views
 
+
 urlpatterns = [
+
     path("admin/", admin.site.urls),
+
+    # Allauth routes
+    path("accounts/", include("allauth.urls")),
+
     path("", views.HomePageView.as_view(), name="home"),
-    path("organization_list", OrganizationList.as_view(), name="organization-list"),
-    path("organization_list/add", OrganizationCreateView.as_view(), name="organization-add"),
-    path("organization_list/<pk>", OrganizationUpdateView.as_view(), name="organization-update"),
-    path("organization_list/<pk>/delete", OrganizationDeleteView.as_view(), name="organization-delete"),
 
-    path("orgmem_list", OrganizationMemberListView.as_view(), name="organization-member-list"),
-    path("orgmem_list/add", views.OrganizationMemberCreateView.as_view(), name="organization-member-add"),
-    path("orgmem_list/<pk>", views.OrganizationMemberUpdateView.as_view(), name="organization-member-update"),
-    path("orgmem_list/<pk>/delete", views.OrganizationMemberDeleteView.as_view(), name="organization-member-delete"),
+    path("organization_list", views.OrganizationList.as_view(), name="org_list"),
+    path("organization_list/add", views.OrganizationCreateView.as_view(), name="org_add"),
+    path("organization_list/<pk>", views.OrganizationUpdateView.as_view(), name="org_update"),
+    path("organization_list/<pk>/delete", views.OrganizationDeleteView.as_view(), name="org_delete"),
 
-    path("student_list", views.StudentListView.as_view(), name="student-list"),
-    path("student_list/add", views.StudentCreateView.as_view(), name="student-add"),
-    path("student_list/<pk>", views.StudentUpdateView.as_view(), name="student-update"),
-    path("student_list/<pk>/delete", views.StudentDeleteView.as_view(), name="student-delete"),
+    path("orgmem_list", views.OrganizationMemberListView.as_view(), name="orgmember_list"),
+    path("orgmem_list/add", views.OrganizationMemberCreateView.as_view(), name="orgmember_add"),
+    path("orgmem_list/<pk>", views.OrganizationMemberUpdateView.as_view(), name="orgmember_update"),
+    path("orgmem_list/<pk>/delete", views.OrganizationMemberDeleteView.as_view(), name="orgmember_delete"),
 
-    path("college_list", views.CollegeListView.as_view(), name="college-list"),
-    path("college_list/add", views.CollegeCreateView.as_view(), name="college-add"),
-    path("college_list/<pk>", views.CollegeUpdateView.as_view(), name="college-update"),
-    path("college_list/<pk>/delete", views.CollegeDeleteView.as_view(), name="college-delete"),
+    path("student_list", views.StudentListView.as_view(), name="student_list"),
+    path("student_list/add", views.StudentCreateView.as_view(), name="student_add"),
+    path("student_list/<pk>", views.StudentUpdateView.as_view(), name="student_update"),
+    path("student_list/<pk>/delete", views.StudentDeleteView.as_view(), name="student_delete"),
 
-    path("program_list", views.ProgramListView.as_view(), name="program-list"),
-    path("program_list/add", views.ProgramCreateView.as_view(), name="program-add"),
-    path("program_list/<pk>", views.ProgramUpdateView.as_view(), name="program-update"),
-    path("program_list/<pk>/delete", views.ProgramDeleteView.as_view(), name="program-delete"),
+    path("college_list", views.CollegeListView.as_view(), name="college_list"),
+    path("college_list/add", views.CollegeCreateView.as_view(), name="college_add"),
+    path("college_list/<pk>", views.CollegeUpdateView.as_view(), name="college_update"),
+    path("college_list/<pk>/delete", views.CollegeDeleteView.as_view(), name="college_delete"),
+
+    path("program_list", views.ProgramListView.as_view(), name="program_list"),
+    path("program_list/add", views.ProgramCreateView.as_view(), name="program_add"),
+    path("program_list/<pk>", views.ProgramUpdateView.as_view(), name="program_update"),
+    path("program_list/<pk>/delete", views.ProgramDeleteView.as_view(), name="program_delete"),
+
 ]
