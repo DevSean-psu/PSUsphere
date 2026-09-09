@@ -17,4 +17,4 @@ staticfiles/
 .idea/
 
 # Environment variables
-.env
+.envdb.sqlite3
