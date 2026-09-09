@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 from pathlib import Path
 import os
 import socket
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
-    'studentorg',    
+    'studentorg',
     'widget_tweaks',
 ]
 
@@ -55,9 +56,10 @@ else:
 
 
 AUTHENTICATION_BACKENDS = [
-'django.contrib.auth.backends.ModelBackend',
-'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,7 +72,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'projectsite.urls'
+
 
 TEMPLATES = [
     {
@@ -87,12 +91,14 @@ TEMPLATES = [
     },
 ]
 
+
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = (
     BASE_DIR / 'static',
 )
+
 
 WSGI_APPLICATION = 'projectsite.wsgi.application'
 
@@ -150,6 +156,7 @@ STATICFILES_DIRS = (
     BASE_DIR / 'static',
 )
 
+
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
@@ -159,17 +166,27 @@ MAILERS = {
     },
 }
 
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/accounts/login/'                  # where @login_required will send users
-LOGIN_REDIRECT_URL = '/'                        # where to go after successful login
-LOGOUT_REDIRECT_URL = '/accounts/login/'        # after logout, go back to login
-ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'             # where to redirect after logout
-ACCOUNT_LOGOUT_ON_GET = True                    # logout immediately on GET
-ACCOUNT_LOGIN_METHODS = {"username", "email"}   # allow login with username OR email
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_LOGOUT_ON_GET = True
+
+ACCOUNT_LOGIN_METHODS = {"username", "email"}
+
 ACCOUNT_SIGNUP_FIELDS = [
-"username*",
-"email*",
-"password1*",
-"password2*",
+    "username*",
+    "email*",
+    "password1*",
+    "password2*",
 ]
+
+
+# GitHub / Social Account Settings
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
